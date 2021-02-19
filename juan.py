@@ -9,6 +9,16 @@ juan = commands.Bot(command_prefix = 'j ')
 async def on_ready():
     print('Im in.')
     await juan.change_presence(activity=discord.Game(name="j commands")), juan.remove_command('help')
+
+@juan.event
+async def on_member_join(member, ctx):
+    await ctx.send(f'{member} is in the server!')
+    
+@juan.event
+async def on_member_remove(member, ctx):
+    await ctx.send(f'{member} left :(')
+
+
     
 #moderation commands
 
@@ -39,10 +49,6 @@ async def unban(ctx, *, member):
     await ctx.guild.unban(user)
     await ctx.send(f"{user} has been unbanned sucessfully, we hope you behave, kababayan :ok_hand:")
     return
-
-#mute
-
-
 
 #utility commands
 @juan.command()
@@ -159,13 +165,8 @@ async def movie(ctx):
 
 
 
-#@juan.event
-#async def on_member_join(member):
- #   print(f'{member} is in! Kamusta Kababayan!')
 
-#@juan.event
-#async def on_member_remove(member):
- #   print(f'{member} is gone! We hope you return kababayan ;(')
+
 
 
 juan.run('ODExNTIxMDQ2Mzc3MDA1MDY4.YCzZ3g.BAgyv91p2W1rU7qDQfzh_buym1I')
