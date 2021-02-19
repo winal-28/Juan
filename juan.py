@@ -10,7 +10,41 @@ async def on_ready():
     print('Im in.')
     await juan.change_presence(activity=discord.Game(name="j commands")), juan.remove_command('help')
     
+#moderation commands
 
+#kick
+@juan.command()
+@commands.has_permissions(kick_members=True)
+async def kick(ctx, user: discord.Member, *, reason=None):
+  await user.kick(reason=reason)
+  await ctx.send(f"{user} has been kicked sucessfully :ok_hand:")
+
+#ban
+@juan.command()
+@commands.has_permissions(ban_members=True)
+async def ban(ctx, user: discord.Member, *, reason=None):
+  await user.ban(reason=reason)
+  await ctx.send(f"{user} has been bannned sucessfully")
+
+#unban
+@juan.command()
+async def unban(ctx, *, member):
+  banned_users = await ctx.guild.bans()
+  member_name, member_discriminator = member.split('#')
+
+  for ban_entry in banned_users:
+    user = ban_entry.user
+  
+  if (user.name, user.discriminator) == (member_name, member_discriminator):
+    await ctx.guild.unban(user)
+    await ctx.send(f"{user} has been unbanned sucessfully, we hope you behave, kababayan :ok_hand:")
+    return
+
+#mute
+
+
+
+#utility commands
 @juan.command()
 async def ping(ctx):
     await ctx.send('Pongina!')
@@ -75,7 +109,9 @@ async def rice(ctx):
     rice_picsandgifs = ['https://media.tenor.com/images/93ceee83581f9c349b567807abed8d98/tenor.gif', 'https://media.tenor.com/images/54abcc48c38f29750afdbab38326ee7c/tenor.gif', 'https://media.tenor.com/images/3a08b4b5ff0c4afdf9a30dc75ffd4daf/tenor.gif', 'https://media.tenor.com/images/92b1bfc8bde13361f0ea6a7a40d6cd22/tenor.gif' ]
     await ctx.send(f'RICE {random.choice(rice_picsandgifs)}')
 
-
+@juan.command()
+async def say(ctx):
+    await ctx.send('I can see you from my fking terminal dude')
 
 @juan.command()
 async def msg(ctx, *, message):
@@ -104,9 +140,23 @@ async def president(ctx):
 
 @juan.command()
 async def vicepresident(ctx):
-    embed=discord.Embed(title="Ferdinand Marcos Jr.", url="https://duckduckgo.com/rodrigoduterte", description="Rodrigo Roa Duterte, also known as Digong and Rody, is a Filipino politician who is the current president of the Philippines and the first from Mindanao to hold the office. He is the chairperson of PDP–Laban, the ruling political party in the Philippines.", color=0xFF5733)
-    embed.set_thumbnail(url="https://duckduckgo.com/i/2c883356.jpg")
+    embed=discord.Embed(title="Bongbong Marcos", url="https://duckduckgo.com/bongbongmarcos", description="Ferdinand \"Bongbong\" Romualdez Marcos Jr. is a Filipino politician who most recently served as a senator in the 16th Congress. He is the second child and only son of former President and dictator Ferdinand E. Marcos and of former First Lady Imelda Romualdez-Marcos.", color=0xFF5733)
+    embed.set_thumbnail(url="https://duckduckgo.com/i/ace9d772.jpg")
     await ctx.send(embed=embed)
+
+@juan.command()
+async def traitor(ctx):
+    embed=discord.Embed(title="Emilio Aguinaldo", url="https://duckduckgo.com/emilioaguinaldo", description="Emilio Aguinaldo y Famy was a Filipino revolutionary, politician, and military leader who is officially recognized as the first and the youngest President of the Philippines and the first president of a constitutional republic in Asia.", color=0xFF5733)
+    embed.set_thumbnail(url="https://duckduckgo.com/i/b7692918.jpg")
+    await ctx.send(embed=embed)
+
+@juan.command()
+async def movie(ctx):
+    embed=discord.Embed(title="Heneral Luna", url="https://duckduckgo.com/heneralluna", description="Heneral Luna is a 2015 Filipino historical biopic film depicting General Antonio Luna's leadership of the Philippine Revolutionary Army during the Philippine–American War. Directed by Jerrold Tarog and produced by Artikulo Uno Productions, the film received critical acclaim from critics, praising its cinematography, writing, acting and plot", color=0xFF5733)
+    embed.set_thumbnail(url="https://duckduckgo.com/i/8934f749.jpg")
+    await ctx.send(embed=embed)   
+
+
 
 
 #@juan.event
