@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 import random
-
+import os
 
 juan = commands.Bot(command_prefix = 'j ')
 
@@ -171,5 +171,5 @@ async def movie(ctx):
 
 
 
-juan.run('ODExNTIxMDQ2Mzc3MDA1MDY4.YCzZ3g.fDlkn7etchqWEue9YhbmIrLsdj4')
+juan.run(environ['ODExNTIxMDQ2Mzc3MDA1MDY4.YCzZ3g.fDlkn7etchqWEue9YhbmIrLsdj4'])
 
