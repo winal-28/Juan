@@ -59,10 +59,12 @@ async def ping(ctx):
 async def kamusta(ctx):
     await ctx.send('Kamusta, kababayan! My name is Juan, I am a discord bot from the Philipines! I started being developed at exactly 2/17/2021, by ALwin#6481. I am always in development.')
 
+
 @juan.command()
 async def commands(ctx):
     nl = '\n'
-    await ctx.send(f'```Here are the list of commands:{nl}{nl} j kamusta - Make me introduce myself{nl} j commands - Shows the list of commands{nl} j tangina_mo - Make me mad >:( {nl} j makemefeelbetter - comports you in my bery shitty accent{nl}{nl}For more information, DM ALwin#6481{nl}Just like Periodiccia, I also have secret commands! Good luck on finding them out lmao{nl}{nl}Sa ngalan ng Bansang Maharlika!```')
+    embed=discord.Embed(title="Juan Commands", url="https://discord.com/app", description=f"Here are the list of commands:{nl} j kamusta - Make me introduce myself{nl} j commands - Shows this {nl} j tangina_mo - Makes me mad >:( {nl} j makemefeelbetter - comports you in my bery shitty accent{nl} j adobo, j rice - shows gifs of adobo and rice, {nl} j president, j vicepresident, j traitor, j mikeybustos, (more will be added) - shows you information about them, {nl} j msg (insert what you want me to say here) - makes me say shit on your demand!, {nl} j movie - send an interesting movie, {nl} j howtomakeadobo, j howtomakecaldereta, (more will be added) - sends a youtube video on how to make those popular Filipino cuisines {nl}{nl} Moderation Commands {nl}{nl} j kick (insert user here) - kicks the member you want to kick {nl} j ban (insert user here) - bans the member you want to kick {nl}{nl} Note: there are no unban, tempban, or mute commands yet as ALwin is still trying to find out how to. If you do know please tell him lmfao {nl} Note 2: There is currently a Tropical Depression in ALwin\'s area so he prolly wouldn't be updating me any soon unless the electricity comes back (if it gets cut off because of the wind :( ){nl}{nl} Mabuhay ang Pilipinas!", color=0xFF5733)
+    await ctx.send(embed=embed)
 
 @juan.command()
 async def tangina_mo(ctx):
