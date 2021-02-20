@@ -171,5 +171,5 @@ async def movie(ctx):
 
 
 
-juan.run(os.environ['ODExNTIxMDQ2Mzc3MDA1MDY4.YCzZ3g.BAgyv91p2W1rU7qDQfzh_buym1I'])
+juan.run(os.environ['token'])
 
