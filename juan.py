@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 import random
-
+import os
 
 juan = commands.Bot(command_prefix = 'j ')
 
@@ -53,7 +53,7 @@ async def unban(ctx, *, member):
 #utility commands
 @juan.command()
 async def ping(ctx):
-    await ctx.send('Pongina!')
+    await ctx.send(f'Pongina! {round(juan.latency * 1000)}ms')
 
 @juan.command()
 async def kamusta(ctx):
@@ -171,5 +171,5 @@ async def movie(ctx):
 
 
 
-juan.run('ODExNTIxMDQ2Mzc3MDA1MDY4.YCzZ3g.BAgyv91p2W1rU7qDQfzh_buym1I')
+juan.run(os.environ['ODExNTIxMDQ2Mzc3MDA1MDY4.YCzZ3g.BAgyv91p2W1rU7qDQfzh_buym1I'])
 
