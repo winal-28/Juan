@@ -9,4 +9,6 @@
 
 ## Official Discord Server: https://discord.gg/4Xcrdm5BtD
 
+# ATTENTION!
+## The code in this repo is now completely irrelevant and the bot isn't even running off of here. If you want to see the real code for the bot. Check: https://replit.com/@winal2/Juan
 
