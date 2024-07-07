@@ -5,6 +5,7 @@ import asyncio
 #from webserver import keep_alive
 import os
 from dotenv import load_dotenv
+from discord.ext.commands import MissingPermissions
 
 intents = discord.Intents.default()
 intents.members = True
@@ -49,16 +50,35 @@ async def juancommands(ctx):
 @juan.command()
 @commands.has_permissions(kick_members=True)
 async def kick(ctx, user: discord.Member, *, reason=None):
-    await user.kick(reason=reason)
-    await ctx.send(f"{user} has been kicked sucessfully :ok_hand:")
+    if reason is None:
+        reason="no reason provided"
+        try:
+            await ctx.guild.kick(user)
+            await ctx.send(f"User {user.mention} has been kicked for {reason}.")
+        except: 
+            pass
 
+@kick.error
+async def kick_error(ctx, error):
+    if isinstance(error, MissingPermissions):
+        await ctx.send("You don't have permission to kick members.")
 
 #ban
 @juan.command()
 @commands.has_permissions(ban_members=True)
 async def ban(ctx, user: discord.Member, *, reason=None):
-    await user.ban(reason=reason)
-    await ctx.send(f"{user} has been bannned sucessfully")
+    if reason is None:
+        reason="no reason provided"
+        try:
+            await ctx.guild.ban(user)
+            await ctx.send(f"User {user.mention} has been banned for {reason}.")
+        except: 
+            pass
+
+@ban.error
+async def ban_error(ctx, error):
+    if isinstance(error, MissingPermissions):
+        await ctx.send("You don't have permission to ban members.")
 
 
 #unban
